@@ -50,24 +50,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Movement controls (left and right)
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        //if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
+        if (Input.GetKey(KeyCode.A))
         {
-            if (Input.GetKey(KeyCode.A))
-            {
-                moveDirection = -1;
-            }
-            else
-            {
-                moveDirection = 1;
-            }
+            moveDirection = -1;
         }
-        else
+        else if (Input.GetKey(KeyCode.D))
         {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
-            {
-                moveDirection = 0;
-            }
+            moveDirection = 1;
+        }
+        else if (isGrounded || r2d.velocity.magnitude < 0.01f)
+        {
+            moveDirection = 0;
         }
 
         // Jumping
