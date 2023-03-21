@@ -11,7 +11,6 @@ public class MovementController : MonoBehaviour
     public float movementSpeed = 3.0f;
     Vector2 movement = new Vector2();
     Animator animator;
-
     string animationState = "AnimationState";
     Rigidbody2D rb2D;
 
@@ -56,13 +55,14 @@ public class MovementController : MonoBehaviour
 
         // Normalize() will normalize our vector and keep the player moving at the same rate of speed, no matter the direction.
         movement.Normalize();
+        
         // Set the velocity of the Rigidbody2D component to move the character
         rb2D.velocity = movement * movementSpeed;
     }
 
     private void UpdateState()
     {
-        // Setting animation state based on movement direction
+        // Setting character animation state based on movement direction.
         if (movement.x > 0)
         {
             animator.SetInteger(animationState, (int)CharStates.walkEast);
