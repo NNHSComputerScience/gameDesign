@@ -15,7 +15,7 @@ public class MovementController : MonoBehaviour
     string animationState = "AnimationState";
     Rigidbody2D rb2D;
 
-    // enum
+    // An enum is a set of enumerated constants.  Each constant is used to store an integer value to represent each animation state.
     enum CharStates
     {
         walkEast = 1,
@@ -28,36 +28,41 @@ public class MovementController : MonoBehaviour
 
     private void Start()
     {
-        // get components
+        // get components for animation and movement
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        // update animation
+        // Call method to update animation state
         UpdateState();
     }
 
     void FixedUpdate()
     {
-        // movement
+        // Call method to update movement
         MoveCharacter();
     }
 
     private void MoveCharacter()
     {
+        // the GetAxisRaw method takes a parameter specifying which 2D axis we are interested in, horixontal or vertical,
+        //      and retrieves a -1, 0, or 1 from the Unity Input Manager and returns it.
+        //      1 = "d" or "right arrow"; -1 = "a" of "left arrow"; 0 = no key pressed.  
+        //      This is configurable in the Unity Input Manager settings.
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        // normalize
+        // Normalize() will normalize our vector and keep the player moving at the same rate of speed, no matter the direction.
         movement.Normalize();
+        // Set the velocity of the Rigidbody2D component to move the character
         rb2D.velocity = movement * movementSpeed;
     }
 
     private void UpdateState()
     {
-        // setting animation state based on movement direction
+        // Setting animation state based on movement direction
         if (movement.x > 0)
         {
             animator.SetInteger(animationState, (int)CharStates.walkEast);
