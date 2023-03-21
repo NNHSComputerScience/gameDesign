@@ -47,7 +47,7 @@ public class MovementController : MonoBehaviour
 
     private void MoveCharacter()
     {
-        // the GetAxisRaw method takes a parameter specifying which 2D axis we are interested in, horixontal or vertical,
+        // the GetAxisRaw method takes a parameter specifying which 2D axis we are interested in, horizontal or vertical,
         //      and retrieves a -1, 0, or 1 from the Unity Input Manager and returns it.
         //      1 = "d" or "right arrow"; -1 = "a" of "left arrow"; 0 = no key pressed.  
         //      This is configurable in the Unity Input Manager settings.
