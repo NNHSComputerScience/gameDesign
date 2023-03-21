@@ -34,7 +34,8 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        // Call method to update animation state
+        // Call UpdateState method to update animation state
+        //  If you are not using the animation, comment out the call to this method to just use movement.
         UpdateState();
     }
 
